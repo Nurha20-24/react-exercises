@@ -34,11 +34,16 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
-
+.container {
+  display: flex;
+}
 .card {
-  background-color: aliceblue;
-  padding: 10px;
-  border-radius: 16px;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex: 1;
 }
 
 button {
@@ -71,4 +76,26 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+th,
+td {
+  border: none;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+img {
+  max-width: 150px;
+  border-radius: 4px;
 }

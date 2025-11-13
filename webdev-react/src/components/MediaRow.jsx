@@ -1,7 +1,8 @@
-const MediaRow = (props) => {
-  const {item} = props;
+import React from 'react';
+
+const MediaRow = ({item}) => {
   return (
-    <tr key={item.media_id}>
+    <tr>
       <td>
         <img src={item.thumbnail} alt={item.title} />
       </td>
