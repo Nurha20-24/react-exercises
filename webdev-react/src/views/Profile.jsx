@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import HookDemo from '../components/HookDemo';
 
 const Profile = () => {
-  return <div>Profile Page</div>;
+  return <HookDemo />;
 };
 Profile.propTypes = {};
 export default Profile;

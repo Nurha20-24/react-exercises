@@ -14,6 +14,7 @@ const Single = () => {
           <div>{item.title}</div>
           <div>{item.description}</div>
           <div>{item.username}</div>
+
           <button
             onClick={() => {
               navigate(-1);
