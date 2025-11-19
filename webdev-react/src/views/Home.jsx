@@ -1,5 +1,5 @@
 import MediaRow from '../components/MediaRow';
-import SingleView from '../components/SingleView';
+//import SingleView from '../components/SingleView';
 import {useState, useEffect} from 'react';
 
 const fetchData = async (url, options = {}) => {
@@ -17,21 +17,25 @@ const fetchData = async (url, options = {}) => {
 };
 
 const Home = () => {
-  const [selectedItem, setSelectedItem] = useState(null);
+  //const [selectedItem, setSelectedItem] = useState(null);
   const [mediaArray, setMediaArray] = useState([]);
 
-  const getMedia = async () => {
-    const data = await fetchData('/data.json');
-    setMediaArray(data);
-  };
-
   useEffect(() => {
+    const getMedia = async () => {
+      try {
+        const data = await fetchData('/data.json');
+        setMediaArray(data);
+      } catch (error) {
+        console.error('Error fetching media data: ', error);
+      }
+    };
+
     getMedia();
   }, []);
 
   return (
     <>
-      <SingleView item={selectedItem} setSelectedItem={setSelectedItem} />
+      {/* <SingleView item={selectedItem} setSelectedItem={setSelectedItem} /> */}
       <h2>My Media</h2>
       <table>
         <thead>
@@ -50,7 +54,7 @@ const Home = () => {
             <MediaRow
               key={item.media_id}
               item={item}
-              setSelectedItem={setSelectedItem}
+              //setSelectedItem={setSelectedItem}
             />
           ))}
         </tbody>
