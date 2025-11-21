@@ -1,13 +1,8 @@
-import LoginForm from '../components/LoginForm';
-import RegisterForm from '../components/RegisterForm';
+import {useUserContext} from '../hooks/contextHooks';
 
 const Login = () => {
-  return (
-    <>
-      <LoginForm />
-      <RegisterForm />
-    </>
-  );
+  const {handleLogout} = useUserContext();
+  return <button onClick={handleLogout}>Logout</button>;
 };
 
 export default Login;

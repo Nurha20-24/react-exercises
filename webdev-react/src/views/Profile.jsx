@@ -1,15 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import {useUser} from '../hooks/apiHooks';
+import {useUserContext} from '../hooks/contextHooks';
 
 const Profile = () => {
-  const [user, setUser] = useState(null);
+  //User state korvattu contextilla olevilla stateilla
+  //const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
   const {getUserByToken} = useUser();
+  const {user} = useUserContext();
 
   useEffect(() => {
     const getUserData = async () => {
+      const token = localStorage.getItem('token');
       try {
-        const token = localStorage.getItem('token');
         const userResponse = await getUserByToken(token);
         setUser(userResponse.user);
       } catch (error) {
@@ -17,7 +20,7 @@ const Profile = () => {
         setError(error.message);
       }
     };
-    getUserData();
+    //getUserData();
   }, []);
 
   return (

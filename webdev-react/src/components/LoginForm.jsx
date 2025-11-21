@@ -1,8 +1,8 @@
 import useForm from '../hooks/formHooks';
-import {useAuthentication} from '../hooks/apiHooks';
+import {useUserContext} from '../hooks/contextHooks';
 
 const LoginForm = () => {
-  const {postLogin} = useAuthentication();
+  const {handleLogin} = useUserContext();
 
   const initValues = {
     username: '',
@@ -12,9 +12,7 @@ const LoginForm = () => {
   const doLogin = async (formData) => {
     //console.log(formData); // ÄLÄ IKINÄ LOGGAA LOGIN-tietoja tuotannossa!!
     try {
-      const userInfo = await postLogin(formData);
-      console.log(userInfo);
-      localStorage.setItem('token', userInfo.token);
+      await handleLogin(formData);
     } catch (error) {
       console.log('login error', error);
       // TODO: kotihommia: kerro käyttäjälle, miksi kirjautuminen epäonnistui
