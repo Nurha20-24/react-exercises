@@ -46,6 +46,10 @@ h1 {
   flex: 1;
 }
 
+dialog {
+  flex-direction: column;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -84,15 +88,17 @@ table {
   margin-top: 1rem;
 }
 
-th,
-td {
+th {
+  background-color: #c6d5d7;
   border: none;
-  padding: 8px 12px;
+  padding: 15px 15px;
   text-align: left;
 }
 
-th {
-  background-color: #f2f2f2;
+td {
+  border: 1px solid #f9f8f8;
+  padding: 12px 12px;
+  text-align: left;
 }
 
 img {

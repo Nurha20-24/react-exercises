@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-import React from 'react';
 import {Link, Outlet} from 'react-router';
 const Layout = () => {
   return (
@@ -14,6 +12,15 @@ const Layout = () => {
           </li>
           <li>
             <Link to="/upload">Upload</Link>
+          </li>
+          <li>
+            <Link to="/pizzas">Pizzas</Link>
+          </li>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+          <li>
+            <Link to="/logout">Logout</Link>
           </li>
         </ul>
       </nav>

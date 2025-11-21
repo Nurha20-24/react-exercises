@@ -12,9 +12,6 @@ const useMedia = () => {
   useEffect(() => {
     const getMedia = async () => {
       try {
-        //const data = await fetchData('/data.json');
-        //setMediaArray(data);
-
         const mediaData = await fetchData(MEDIA_API);
         //console.log('Fetched media data: ', mediaData);
 
@@ -54,4 +51,39 @@ const useMedia = () => {
   return {mediaArray};
 };
 
-export {useMedia};
+const useAuthentication = () => {
+  const postLogin = async (inputs) => {
+    const fetchOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(inputs),
+    };
+    const loginResult = await fetchData(
+      import.meta.env.VITE_AUTH_API + '/auth/login',
+      fetchOptions
+    );
+    return loginResult;
+  };
+  return {postLogin};
+};
+
+const useUser = () => {
+  const getUserByToken = async (token) => {
+    const options = {
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+    };
+    const tokenResult = fetchData(`${AUTH_API}/users/token`, options);
+    return tokenResult;
+  };
+
+  const postUser = async (user) => {
+    // TODO: register new user here https://media2.edu.metropolia.fi/auth-api/#api-User-CreateUser
+  };
+  return {getUserByToken, postUser};
+};
+
+export {useMedia, useAuthentication, useUser};

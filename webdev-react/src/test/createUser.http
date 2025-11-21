@@ -1,0 +1,9 @@
+
+POST http://media2.edu.metropolia.fi/auth-api/api/v1/users
+Content-Type: application/json
+
+{
+  "username": "nurhana123",
+  "password": "salasana123",
+  "email": "nurhana123@email.com"
+}
