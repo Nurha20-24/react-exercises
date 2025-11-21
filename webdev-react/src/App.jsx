@@ -1,15 +1,15 @@
 import {BrowserRouter, Routes, Route} from 'react-router';
 import './App.css';
-import {UserProvider} from './contexts/UserContext';
 
 import Layout from './components/Layout';
 import Home from './views/Home';
 import Profile from './views/Profile';
 import Upload from './views/Upload';
-import Pizzas from './views/Pizzas';
 import Single from './views/Single';
+import Pizzas from './views/Pizzas';
 import Login from './views/Login';
 import Logout from './views/Logout';
+import {UserProvider} from './contexts/UserContext';
 import ProtectedRoute from './components/ProtectedRoute';
 
 const App = () => {
@@ -43,7 +43,6 @@ const App = () => {
                 </ProtectedRoute>
               }
             />
-            <Route path="/single" element={<Single />} />
             <Route path="/login" element={<Login />} />
             <Route
               path="/logout"
@@ -53,6 +52,7 @@ const App = () => {
                 </ProtectedRoute>
               }
             />
+            <Route path="/single" element={<Single />} />
           </Route>
         </Routes>
       </UserProvider>
