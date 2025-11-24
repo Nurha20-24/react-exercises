@@ -1,8 +1,10 @@
 import useForm from '../hooks/formHooks';
 import {useUserContext} from '../hooks/contextHooks';
+import {useState} from 'react';
 
 const LoginForm = () => {
   const {handleLogin} = useUserContext();
+  const [error, setError] = useState('');
 
   const initValues = {
     username: '',
@@ -11,11 +13,12 @@ const LoginForm = () => {
 
   const doLogin = async (formData) => {
     //console.log(formData); // ÄLÄ IKINÄ LOGGAA LOGIN-tietoja tuotannossa!!
+    setError(''); // Clear previous errors
     try {
       await handleLogin(formData);
     } catch (error) {
       console.log('login error', error);
-      // TODO: kotihommia: kerro käyttäjälle, miksi kirjautuminen epäonnistui
+      setError('Login failed. Please try again.');
     }
   };
 
@@ -24,6 +27,7 @@ const LoginForm = () => {
   return (
     <>
       <h1>Login</h1>
+
       <form onSubmit={handleSubmit} style={{width: '400px', margin: 'auto'}}>
         <div>
           <label htmlFor="loginuser">Username</label>
@@ -45,6 +49,16 @@ const LoginForm = () => {
             autoComplete="current-password"
           />
         </div>
+        {error && (
+          <div
+            style={{
+              color: 'red',
+              marginBottom: '20px',
+            }}
+          >
+            {error}
+          </div>
+        )}
         <button type="submit">Login</button>
       </form>
     </>

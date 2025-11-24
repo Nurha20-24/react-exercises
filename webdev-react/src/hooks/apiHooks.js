@@ -39,9 +39,8 @@ const useMedia = () => {
   }, []); // Tyhjää dependency, joka ajetaan vain kerran
 
   const postMedia = async (fileData, inputs, token) => {
-    // https://media2.edu.metropolia.fi/media-api/#api-Media-PostMedia
-    // TODO: post the data to Media API and get the data as MediaResponse
-    // TODO: return the data
+    // post the data to Media API and get the data as MediaResponse
+    // return the data
     const fetchOptions = {
       method: 'POST',
       headers: {
@@ -88,7 +87,18 @@ const useUser = () => {
   };
 
   const postUser = async (user) => {
-    // TODO: register new user here https://media2.edu.metropolia.fi/auth-api/#api-User-CreateUser
+    const fetchOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    };
+    const registerResult = await fetchData(
+      import.meta.env.VITE_AUTH_API + '/users/',
+      fetchOptions
+    );
+    return registerResult;
   };
   return {getUserByToken, postUser};
 };

@@ -25,7 +25,7 @@ const UserProvider = ({children}) => {
       navigate('/');
     } catch (e) {
       console.log(e.message);
-      // TODO: throw error to login component
+      throw new Error(e.message);
     }
   };
 
