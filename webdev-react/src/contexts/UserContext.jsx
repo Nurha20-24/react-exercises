@@ -15,6 +15,7 @@ const UserProvider = ({children}) => {
   // login, logout and autologin functions are here instead of components
   const handleLogin = async (credentials) => {
     try {
+      // Post login credentials to API
       const userInfo = await postLogin(credentials);
       console.log(userInfo);
       // set user to state
@@ -32,8 +33,8 @@ const UserProvider = ({children}) => {
   const handleLogout = () => {
     try {
       // remove token from local storage
-      //localStorage.removeItem('token');
-      localStorage.clear();
+      localStorage.removeItem('token');
+      //localStorage.clear();
       // set user to null
       setUser(null);
       // navigate to home or login page
@@ -45,19 +46,23 @@ const UserProvider = ({children}) => {
 
   // handleAutoLogin is used when the app is loaded to check if there is a valid token in local storage
   const handleAutoLogin = async () => {
+    //get token from local storage
     const token = localStorage.getItem('token');
     try {
-      // TODO: get token from local storage
-      // TODO: if token exists, get user data from API
-      // TODO: set user to state
+      // if token exists, get user data from API
+      // set user to state
       if (token) {
         const userResponse = await getUserByToken(token);
         setUser(userResponse.user);
+
+        if (location.pathname === '/login') {
+          navigate('/');
+        }
       }
-      // TODO: navigate to home
-      navigate(location.pathname);
     } catch (e) {
       console.log(e.message);
+      // if token is invalid, remove it from local storage
+      localStorage.removeItem('token');
     }
   };
 

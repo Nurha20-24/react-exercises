@@ -3,7 +3,6 @@ import {useUser} from '../hooks/apiHooks';
 import {useState} from 'react';
 
 function RegisterForm() {
-  // TODO: kotihommia: sovella LoginFormia ja luo tarvittvat API kutsit
   const {postUser} = useUser();
   const [error, setError] = useState('');
 
@@ -19,7 +18,7 @@ function RegisterForm() {
       await postUser(formData);
     } catch (error) {
       console.error('Register error', error);
-      // TODO: kotihommia: kerro käyttäjälle, miksi kirjautuminen epäonnistui
+
       setError('Registration failed. Please try again.');
     }
   };
