@@ -5,6 +5,7 @@ import {useState} from 'react';
 function RegisterForm() {
   const {postUser} = useUser();
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
   const initValues = {
     username: '',
@@ -15,10 +16,12 @@ function RegisterForm() {
   const doRegister = async (formData) => {
     console.log(formData); // ÄLÄ IKINÄ LOGGAA LOGIN-tietoja tuotannossa!!
     try {
+      setError(''); // Clear previous errors
       await postUser(formData);
+      setSuccess('Registration successful. You can now log in.');
     } catch (error) {
       console.error('Register error', error);
-
+      setSuccess('');
       setError('Registration failed. Please try again.');
     }
   };
@@ -59,8 +62,12 @@ function RegisterForm() {
             autoComplete="email"
           />
         </div>
+
         {error && (
           <div style={{color: 'red', marginBottom: '20px'}}>{error}</div>
+        )}
+        {success && (
+          <div style={{color: 'green', marginBottom: '20px'}}>{success}</div>
         )}
         <button type="submit">Register</button>
       </form>

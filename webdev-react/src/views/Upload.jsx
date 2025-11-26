@@ -1,11 +1,14 @@
 import useForm from '../hooks/formHooks';
 import {useState} from 'react';
 import {useFile, useMedia} from '../hooks/apiHooks';
+import {useNavigate} from 'react-router';
 
 const Upload = () => {
   const [file, setFile] = useState(null);
   const {postFile} = useFile();
   const {postMedia} = useMedia();
+
+  const navigate = useNavigate();
 
   const initValues = {title: '', description: ''};
 
@@ -18,9 +21,13 @@ const Upload = () => {
       const mediaResponse = await postMedia(fileResponse.data, inputs, token);
       console.log('file data ', mediaResponse);
 
-      // TODO: What next notify user ? clear the form ? redirect somewhere ?
+      //  notify user and clear the form and navigate to home
+      alert('Upload successful');
+      setFile(null);
+      navigate('/');
     } catch (error) {
       console.log('upload failed: ', error);
+      alert('Upload failed, please try again');
     }
   };
 
@@ -76,7 +83,7 @@ const Upload = () => {
         />
         <button
           type="submit"
-          //disabled={file && inputs.title.length > 3 ? false : true}
+          disabled={file && inputs.title.length > 3 ? false : true}
         >
           Upload
         </button>
