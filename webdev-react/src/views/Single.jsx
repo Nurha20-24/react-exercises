@@ -1,27 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import {useLocation, useNavigate} from 'react-router';
+import Likes from './Likes.jsx';
 
 const Single = () => {
   const navigate = useNavigate();
   const {state} = useLocation();
 
-  console.log('State received:', state);
   const item = state;
-
-  // Fix this line - might be the issue:
-  //const item = state?.item || state; // Try both possibilities
-
-  console.log('Item:', item); // Debug the item
+  console.log('Item:', item);
 
   return (
     <>
-      <h2>Single Item</h2>
       {item && (
         <div>
-          <div>{item.title}</div>
-          <div>{item.description}</div>
-          <div>{item.username}</div>
+          <h2>{item.title}</h2>
           {item.media_type.startsWith('image/') ? (
             <img
               src={item.filename}
@@ -35,6 +26,16 @@ const Single = () => {
               style={{maxWidth: '400px', borderRadius: '10px'}}
             />
           )}
+
+          <p>{item.description}</p>
+          <p>
+            Kuvan latasi: <b>{item.username}</b>{' '}
+            {new Date(item.created_at).toLocaleString('fi', {
+              dateStyle: 'long',
+              timeStyle: 'short',
+            })}
+          </p>
+          <Likes mediaId={item.media_id} />
           <button
             onClick={() => {
               navigate(-1);

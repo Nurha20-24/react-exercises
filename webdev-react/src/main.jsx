@@ -1,8 +1,7 @@
 import {StrictMode} from 'react';
 import {createRoot} from 'react-dom/client';
-
-//import './assets/pico.cyan.css';
 import './index.css'; // Tailwind css
+import './assets/pico.cyan.css';
 
 import App from './App.jsx';
 

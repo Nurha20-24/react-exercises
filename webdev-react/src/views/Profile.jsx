@@ -26,22 +26,26 @@ const Profile = () => {
   */
 
   return (
-    <>
-      <h2 className="bg-fuchsia-300 text-black p-5  hover:bg-amber-600 rounded font-medium">
-        KäyttäjäProfiili
+    <div className="max-w-4xl mx-auto p-4">
+      <h2 className="text-2xl m-4 text-indigo-900 pb-4 border-b border-gray-200">
+        User Profile
       </h2>
-      <div className="card bg-blue-400 p-36">ppppp</div>
-      {user ? (
-        <>
-          <h3>{user.username}</h3>
-          <p>{user.email}</p>
-          <p className="bg-brand">Rekisteröitynyt: {user.created_at}</p>
-        </>
-      ) : (
-        <p>ffbg</p>
-      )}
-      {error && <p>Profiilin tietojen lataaminen epäonnistuin, ({error})</p>}
-    </>
+
+      <div className="bg-white shadow-md rounded-lg p-6">
+        {user ? (
+          <>
+            <h3>{user.username}</h3>
+            <p>Email: {user.email}</p>
+            <p>
+              Registered: {new Date(user.created_at).toLocaleString('fi-FI')}
+            </p>
+          </>
+        ) : (
+          <p>ffbg</p>
+        )}
+        {error && <p>Profiilin tietojen lataaminen epäonnistuin, ({error})</p>}
+      </div>
+    </div>
   );
 };
 Profile.propTypes = {};

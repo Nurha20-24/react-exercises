@@ -11,30 +11,42 @@ const Layout = () => {
 
   return (
     <div>
-      <nav>
-        <ul className="flex items-center *:p-5 px-7 py-2 rounded-lg gap-9  *:text-xl *:font-bold mb-10 *:hover:bg-indigo-200 bg-indigo-100 *:text-blue-950">
+      <nav className="mb-10 bg-white-500 shadow-sm border-b rounded-x px-10 py-10l">
+        <ul className="flex items-center gap-8 border-gray-200 text-lg font-bold text-indigo-900">
           <li>
-            <Link to="/">Home</Link>
+            <Link className="hover:text-indigo-600 p-8" to="/">
+              Home
+            </Link>
           </li>
           {user && (
             <>
               <li>
-                <Link to="/profile">Profile</Link>
+                <Link className="hover:text-indigo-600 p-8" to="/profile">
+                  Profile
+                </Link>
               </li>
               <li>
-                <Link to="/upload">Upload</Link>
+                <Link className="hover:text-indigo-600 p-8" to="/upload">
+                  Upload
+                </Link>
               </li>
               <li>
-                <Link to="/pizzas">Pizzas</Link>
+                <Link className="hover:text-indigo-600 p-8" to="/pizzas">
+                  Pizzas
+                </Link>
               </li>
               <li>
-                <Link to="/logout">Logout</Link>
+                <Link className="hover:text-red-600 p-8" to="/logout">
+                  Logout
+                </Link>
               </li>
             </>
           )}
           {!user && (
             <li>
-              <Link to="/login">Login</Link>
+              <Link className="hover:text-indigo-600 p-8" to="/login">
+                Login
+              </Link>
             </li>
           )}
         </ul>
