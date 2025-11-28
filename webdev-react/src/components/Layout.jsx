@@ -12,7 +12,7 @@ const Layout = () => {
   return (
     <div>
       <nav>
-        <ul>
+        <ul className="flex items-center *:p-5 px-7 py-2 rounded-lg gap-9  *:text-xl *:font-bold mb-10 *:hover:bg-indigo-200 bg-indigo-100 *:text-blue-950">
           <li>
             <Link to="/">Home</Link>
           </li>

@@ -27,12 +27,15 @@ const Profile = () => {
 
   return (
     <>
-      <h2>KäyttäjäProfiili</h2>
+      <h2 className="bg-fuchsia-300 text-black p-5  hover:bg-amber-600 rounded font-medium">
+        KäyttäjäProfiili
+      </h2>
+      <div className="card bg-blue-400 p-36">ppppp</div>
       {user ? (
         <>
           <h3>{user.username}</h3>
           <p>{user.email}</p>
-          <p>Rekiseteröitynyt: {user.created_at}</p>
+          <p className="bg-brand">Rekisteröitynyt: {user.created_at}</p>
         </>
       ) : (
         <p>ffbg</p>

@@ -55,9 +55,7 @@ const UserProvider = ({children}) => {
         const userResponse = await getUserByToken(token);
         setUser(userResponse.user);
 
-        if (location.pathname === '/login') {
-          navigate('/');
-        }
+        navigate(location.pathname);
       }
     } catch (e) {
       console.log(e.message);

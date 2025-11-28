@@ -5,7 +5,9 @@ import {useMedia} from '../hooks/apiHooks';
 
 const Home = () => {
   const [selectedItem, setSelectedItem] = useState(null);
-  const {mediaArray} = useMedia();
+
+  // ylempi komponentti kuljettaa datan ja funktiot alas lapsikomponenteille
+  const {mediaArray, deleteMedia, modifyMedia} = useMedia();
   return (
     <>
       <SingleView item={selectedItem} setSelectedItem={setSelectedItem} />
@@ -29,6 +31,8 @@ const Home = () => {
               key={item.media_id}
               item={item}
               setSelectedItem={setSelectedItem}
+              deleteMedia={deleteMedia}
+              modifyMedia={modifyMedia}
             />
           ))}
         </tbody>

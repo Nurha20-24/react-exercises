@@ -54,9 +54,23 @@ const useMedia = () => {
     const mediaResponse = await fetchData(MEDIA_API, fetchOptions);
     return mediaResponse;
   };
-  return {mediaArray, postMedia};
-};
 
+  const deleteMedia = async (id, token) => {
+    const fetchOptions = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + token,
+      },
+    };
+
+    const deleteResponse = await fetchData(MEDIA_API + '/' + id, fetchOptions);
+    return deleteResponse;
+  };
+
+  const modifyMedia = () => {};
+  return {mediaArray, postMedia, deleteMedia, modifyMedia};
+};
 const useAuthentication = () => {
   const postLogin = async (inputs) => {
     const fetchOptions = {
