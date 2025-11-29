@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {useUser} from '../hooks/apiHooks';
+import React, {useState} from 'react';
+
 import {useUserContext} from '../hooks/contextHooks';
 
 const Profile = () => {
@@ -41,7 +41,7 @@ const Profile = () => {
             </p>
           </>
         ) : (
-          <p>ffbg</p>
+          <p>Ladataan käyttäjän tietoa</p>
         )}
         {error && <p>Profiilin tietojen lataaminen epäonnistuin, ({error})</p>}
       </div>
